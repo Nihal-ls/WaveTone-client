@@ -34,15 +34,15 @@ export default function FeaturedProducts() {
                             viewport={{ once: true }}
                             className="group"
                         >
-                            <div className="card bg-base-200 shadow-sm border border-base-300 hover:shadow-xl hover:border-primary/40 transition-all duration-500 rounded-3xl overflow-hidden h-full">
+                            <div className="card bg-base-100 shadow-sm border border-base-300 hover:shadow-xl hover:border-primary/40 transition-all duration-500 rounded-3xl overflow-hidden h-full">
                                 
                                 <figure className="px-6 pt-6 relative overflow-hidden">
-                                    <div className="bg-base-100 rounded-2xl w-full aspect-square flex items-center justify-center p-4 relative overflow-hidden transition-colors duration-300">
+                                    <div className="rounded-2xl w-full aspect-square flex items-center justify-center p-4 relative overflow-hidden transition-colors duration-300">
                                         <motion.img
                                             whileHover={{ scale: 1.1, rotate: 2 }}
                                             src={product.image}
                                             alt={product.name}
-                                            className="w-full h-full object-contain mix-blend-multiply drop-shadow-lg grayscale group-hover:grayscale-0 transition-all duration-500"
+                                            className="w-full h-full object-contain drop-shadow-lg grayscale group-hover:grayscale-0 transition-all duration-500"
                                         />
                                         
                                         <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
