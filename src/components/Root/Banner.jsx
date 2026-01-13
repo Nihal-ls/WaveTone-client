@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { LuPlayCircle, LuGuitar, LuHeadphones, LuInfo } from "react-icons/lu";
+import { CiShoppingCart } from "react-icons/ci";
 
 export default function HeroBanner() {
   const containerVariants = {
@@ -42,7 +43,7 @@ export default function HeroBanner() {
           </motion.p>
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/shop" className="btn btn-primary btn-lg rounded-full px-10 text-lg">
-               Start Shopping
+              <CiShoppingCart className="text-2xl" />  Start Shopping
             </Link>
             <Link href="/about" className="btn btn-outline btn-lg rounded-full px-10 text-lg border-base-content/30 hover:bg-base-content/10">
               <LuInfo className="text-2xl" /> Learn More
