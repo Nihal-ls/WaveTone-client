@@ -21,7 +21,7 @@ export default function ThemeToggle() {
   };
 
   return (
- <button 
+    <button
       onClick={toggleTheme}
       className="btn btn-ghost btn-circle"
       aria-label="Toggle Theme"

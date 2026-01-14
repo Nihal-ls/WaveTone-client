@@ -37,7 +37,6 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <section className="py-24 bg-base-200/30 relative overflow-hidden">
-      {/* Decorative Soundwave Background Element */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
 
@@ -77,20 +76,17 @@ export default function WhyChooseUs() {
                 {feature.description}
               </p>
               
-              {/* Bottom accent line */}
               <div className="mt-6 w-10 h-1 bg-base-300 rounded-full group-hover:w-full group-hover:bg-primary transition-all duration-500"></div>
             </motion.div>
           ))}
         </div>
 
-        {/* Trust Bar */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           className="mt-20 pt-10 border-t border-base-300 flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-500"
         >
-          {/* You can replace these with real logo SVGs later */}
           <span className="text-xl font-black italic tracking-tighter">FENDER</span>
           <span className="text-xl font-black italic tracking-tighter">ROLAND</span>
           <span className="text-xl font-black italic tracking-tighter">YAMAHA</span>
