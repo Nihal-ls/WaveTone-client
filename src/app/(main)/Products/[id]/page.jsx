@@ -17,7 +17,7 @@ const Page = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/products");
+                const res = await axios.get("https://next-js-backhand.vercel.app/products");
                 const singleProduct = res.data.find(item => item._id === id);
                 setProduct(singleProduct);
                 setLoading(false);
