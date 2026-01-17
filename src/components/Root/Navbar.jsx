@@ -9,16 +9,17 @@ export default function Navbar() {
     const links = <>
         <li><Link href="/">Home</Link></li>
         <li><Link href="/Contact">Contact</Link></li>
+        <li><Link href="/Products">Products</Link></li>
 
     </>
 
-    const { user,logout } = useAuth()
+    const { user, logout } = useAuth()
     console.log(user);
 
 
     const handleLogout = () => {
-         logout()
-         .then(res => console.log(res))
+        logout()
+            .then(res => console.log(res))
     }
 
 
