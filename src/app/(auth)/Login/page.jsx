@@ -1,30 +1,51 @@
 "use client";
+import { useAuth } from "@/Contexts/AuthContext";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import { LuMail, LuLock, LuArrowRight, LuGithub, LuChrome, LuShieldCheck } from "react-icons/lu";
 
 export default function LoginPage() {
+
+  const { login } = useAuth()
+  const navigate = useRouter()
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value
+    const password = e.target.password.value
+
+    login(email, password)
+      .then(res => {
+        console.log(res.user)
+        navigate.push('/')
+        toast.success("🎉 Login Successful!");
+      })
+  }
+
+
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-slate-950">
-      
+
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1598461141410-0975e828a27d?q=80&w=2500&auto=format&fit=crop" 
+        <img
+          src="https://images.unsplash.com/photo-1598461141410-0975e828a27d?q=80&w=2500&auto=format&fit=crop"
           className="w-full h-full object-cover opacity-50 scale-105"
           alt="Music Studio Background"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/80 to-primary/20" />
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="relative z-10 w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-2 bg-white/[0.01] backdrop-blur-2xl border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl m-4"
       >
-        
+
         <div className="hidden lg:flex flex-col justify-between p-16 bg-gradient-to-b from-primary/10 to-transparent border-r border-white/5">
           <div>
-             <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase mb-2">
+            <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase mb-2">
               Wave<span className="text-primary text-glow">_</span>Tone
             </h2>
             <div className="h-1 w-10 bg-primary rounded-full" />
@@ -40,14 +61,14 @@ export default function LoginPage() {
           </div>
 
           <div className="flex items-center gap-6">
-             <div className="flex items-center gap-2 text-white/30 text-[10px] font-black uppercase tracking-widest">
-                <LuShieldCheck className="text-primary" size={16}/> 
-                Secure Session
-             </div>
-             <div className="h-px w-12 bg-white/10" />
-             <div className="text-white/30 text-[10px] font-black uppercase tracking-widest">
-                v2.0.26
-             </div>
+            <div className="flex items-center gap-2 text-white/30 text-[10px] font-black uppercase tracking-widest">
+              <LuShieldCheck className="text-primary" size={16} />
+              Secure Session
+            </div>
+            <div className="h-px w-12 bg-white/10" />
+            <div className="text-white/30 text-[10px] font-black uppercase tracking-widest">
+              v2.0.26
+            </div>
           </div>
         </div>
 
@@ -57,32 +78,34 @@ export default function LoginPage() {
             <p className="text-base-content/50 text-sm mt-2 font-medium">Please enter your professional credentials.</p>
           </div>
 
-          <form className="space-y-5">
+          <form onSubmit={handleLogin} className="space-y-5">
             <div className="space-y-4">
               <div className="form-control">
                 <label className="label py-1"><span className="label-text text-[10px] font-black uppercase tracking-widest opacity-50">Identity</span></label>
                 <div className="relative group">
-                    <LuMail className="absolute left-4 top-1/2 -translate-y-1/2 text-primary opacity-40 group-focus-within:opacity-100 transition-opacity" />
-                    <input 
-                    type="email" 
-                    placeholder="artist@wavetone.com" 
-                    className="input input-bordered w-full pl-12 h-14 bg-base-200 border-none focus:ring-2 focus:ring-primary/30 focus:outline-none rounded-xl font-medium transition-all" 
-                    />
+                  <LuMail className="absolute left-4 top-1/2 -translate-y-1/2 text-primary opacity-40 group-focus-within:opacity-100 transition-opacity" />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="artist@wavetone.com"
+                    className="input input-bordered w-full pl-12 h-14 bg-base-200 border-none focus:ring-2 focus:ring-primary/30 focus:outline-none rounded-xl font-medium transition-all"
+                  />
                 </div>
               </div>
 
               <div className="form-control">
                 <div className="flex justify-between items-end mb-1">
-                    <label className="label py-0"><span className="label-text text-[10px] font-black uppercase tracking-widest opacity-50">Security Key</span></label>
-                    <a href="#" className="text-[10px] font-black text-primary hover:underline uppercase tracking-widest">Forgot?</a>
+                  <label className="label py-0"><span className="label-text text-[10px] font-black uppercase tracking-widest opacity-50">Security Key</span></label>
+                  <a href="#" className="text-[10px] font-black text-primary hover:underline uppercase tracking-widest">Forgot?</a>
                 </div>
                 <div className="relative group">
-                    <LuLock className="absolute left-4 top-1/2 -translate-y-1/2 text-primary opacity-40 group-focus-within:opacity-100 transition-opacity" />
-                    <input 
-                    type="password" 
-                    placeholder="••••••••" 
-                    className="input input-bordered w-full pl-12 h-14 bg-base-200 border-none focus:ring-2 focus:ring-primary/30 focus:outline-none rounded-xl font-medium transition-all" 
-                    />
+                  <LuLock className="absolute left-4 top-1/2 -translate-y-1/2 text-primary opacity-40 group-focus-within:opacity-100 transition-opacity" />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="••••••••"
+                    className="input input-bordered w-full pl-12 h-14 bg-base-200 border-none focus:ring-2 focus:ring-primary/30 focus:outline-none rounded-xl font-medium transition-all"
+                  />
                 </div>
               </div>
             </div>
