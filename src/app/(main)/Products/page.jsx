@@ -11,7 +11,7 @@ const Page = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const data = axios("http://localhost:5000/products")
+        const data = axios("https://next-js-backhand.vercel.app/products")
             .then(res => {
                 setProducts(res.data)
                 setLoading(false)
